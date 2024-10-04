@@ -10,8 +10,7 @@ RELEASE="$(rpm -E %fedora)"
 # Packages can be installed from any enabled yum repo on the image.
 # RPMfusion repos are available by default in ublue main images
 # Install thinkfan, tlp, igt-gpu-tools and displaylink kernel module
-rpm-ostree override remove clevis clevis-luks --install http://148.252.102.145/clevis-22-1.fc40.x86_64.rpm \
---install http://148.252.102.145/clevis-luks-22-1.fc40.x86_64.rpm
+rpm-ostree override remove clevis --install /tmp/rpms/clevis-22-1.fc40.x86_64.rpm
 rpm-ostree install tlp thinkfan igt-gpu-tools /tmp/rpms/kmods/*evdi*.rpm
 
 #Disable negativo repo after installing displaylink, as it otherwise conflicts with RPM-fusion
