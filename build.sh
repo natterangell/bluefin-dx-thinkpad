@@ -10,7 +10,8 @@ RELEASE="$(rpm -E %fedora)"
 # Packages can be installed from any enabled yum repo on the image.
 # RPMfusion repos are available by default in ublue main images
 # Install thinkfan, tlp, igt-gpu-tools and displaylink kernel module
-rpm-ostree install /tmp/clevis/*.rpm
+rpm-ostree install https://github.com/natterangell/bluefin-dx-thinkpad/raw/refs/heads/main/clevis-22/clevis-22-1.fc40.x86_64.rpm \
+https://github.com/natterangell/bluefin-dx-thinkpad/raw/refs/heads/main/clevis-22/clevis-dracut-22-1.fc40.x86_64.rpm
 rpm-ostree install tlp thinkfan igt-gpu-tools /tmp/rpms/kmods/*evdi*.rpm
 
 #Disable negativo repo after installing displaylink, as it otherwise conflicts with RPM-fusion
