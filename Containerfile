@@ -48,7 +48,7 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 ## the following RUN directive does all the things required to run "build.sh" as recommended
 
 # Add clevis fork
-COPY clevis/* /tmp/clevis
+COPY clevis-22/* /tmp/clevis
 
 ## Add displaylink support
 COPY --from=ghcr.io/ublue-os/akmods-extra:coreos-stable-40 /rpms/ /tmp/rpms
