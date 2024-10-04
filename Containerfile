@@ -53,7 +53,6 @@ RUN curl -Lo /etc/yum.repos.d/natterangell.repo https://copr.fedorainfracloud.or
 ## Add displaylink support
 COPY --from=ghcr.io/ublue-os/akmods-extra:coreos-stable-40 /rpms/ /tmp/rpms
 RUN curl -Lo /etc/yum.repos.d/fedora-multimedia.repo https://negativo17.org/repos/fedora-multimedia.repo
-RUN wget https://github.com/natterangell/bluefin-dx-thinkpad/raw/refs/heads/main/clevis-22/clevis-22-1.fc40.x86_64.rpm -P /tmp/rpms
 RUN find /tmp/rpms
 
 COPY build.sh /tmp/build.sh
