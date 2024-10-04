@@ -48,12 +48,13 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 ## the following RUN directive does all the things required to run "build.sh" as recommended
 
 # Add clevis fork
-COPY clevis-22/* /tmp/clevis
-RUN find /tmp/clevis
+#COPY clevis-22/* /tmp/clevis
+#RUN find /tmp/clevis
 
 ## Add displaylink support
 COPY --from=ghcr.io/ublue-os/akmods-extra:coreos-stable-40 /rpms/ /tmp/rpms
 RUN curl -Lo /etc/yum.repos.d/fedora-multimedia.repo https://negativo17.org/repos/fedora-multimedia.repo
+RUN wget https://github.com/natterangell/bluefin-dx-thinkpad/raw/refs/heads/main/clevis-22/clevis-22-1.fc40.x86_64.rpm -P /tmp/rpms
 RUN find /tmp/rpms
 
 COPY build.sh /tmp/build.sh
