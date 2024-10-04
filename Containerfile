@@ -47,9 +47,8 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 ## make modifications desired in your image and install packages by modifying the build.sh script
 ## the following RUN directive does all the things required to run "build.sh" as recommended
 
-# Add clevis fork
-#COPY clevis-22/* /tmp/clevis
-#RUN find /tmp/clevis
+## Add custom clevis repo
+RUN curl -Lo /etc/yum.repos.d/natterangell.repo https://copr.fedorainfracloud.org/coprs/natterangell/clevis-tpm1/repo/fedora-40/natterangell-clevis-tpm1-fedora-40.repo
 
 ## Add displaylink support
 COPY --from=ghcr.io/ublue-os/akmods-extra:coreos-stable-40 /rpms/ /tmp/rpms
