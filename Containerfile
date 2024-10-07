@@ -50,6 +50,10 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 ## Add custom clevis repo
 RUN curl -Lo /etc/yum.repos.d/natterangell.repo https://copr.fedorainfracloud.org/coprs/natterangell/clevis-tpm1/repo/fedora-40/natterangell-clevis-tpm1-fedora-40.repo
 
+## Download Clevis RPMs with TPM 1.2 support
+RUN mkdir /tpm/clevis
+RUN wget -qO- https://api.github.com/repos/oldium/clevis/releases/tags/v21_tpm1u2 | jq -r '.assets[].browser_download_url | select(test("fc40"))' | wget -ci- && mv clevis*.rpm /tmp/clevis
+
 ## Add displaylink support
 COPY --from=ghcr.io/ublue-os/akmods-extra:coreos-stable-40 /rpms/ /tmp/rpms
 RUN curl -Lo /etc/yum.repos.d/fedora-multimedia.repo https://negativo17.org/repos/fedora-multimedia.repo
