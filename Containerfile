@@ -48,7 +48,7 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 ## the following RUN directive does all the things required to run "build.sh" as recommended
 
 ## Add custom clevis repo
-RUN curl -Lo /etc/yum.repos.d/natterangell.repo https://copr.fedorainfracloud.org/coprs/natterangell/clevis-tpm1/repo/fedora-40/natterangell-clevis-tpm1-fedora-40.repo
+#RUN curl -Lo /etc/yum.repos.d/natterangell.repo https://copr.fedorainfracloud.org/coprs/natterangell/clevis-tpm1/repo/fedora-40/natterangell-clevis-tpm1-fedora-40.repo
 
 ## Download Clevis RPMs with TPM 1.2 support
 RUN mkdir /tmp/clevis
