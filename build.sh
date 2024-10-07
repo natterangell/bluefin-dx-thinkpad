@@ -20,8 +20,5 @@ rpm-ostree install tlp thinkfan igt-gpu-tools /tmp/rpms/kmods/*evdi*.rpm /tmp/cl
 # Disable negativo repo after installing displaylink, as it otherwise conflicts with RPM-fusion
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-multimedia.repo
 
-# Disable own fork, as packages will not be layered
-#sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/natterangell.repo
-
 # Mask power-profiles-daemon in order for tlp to work correctly
 systemctl mask power-profiles-daemon.service
