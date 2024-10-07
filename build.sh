@@ -10,9 +10,6 @@ RELEASE="$(rpm -E %fedora)"
 # Packages can be installed from any enabled yum repo on the image.
 # RPMfusion repos are available by default in ublue main images
 
-# Remove default tpm2-unlock ublue package
-rpm-ostree override remove ublue-os-luks
-
 # Override clevis and clevis-luks from base in favour of own fork with TPM1.2 suport
 #rpm-ostree override replace --experimental --freeze --from repo='copr:copr.fedorainfracloud.org:natterangell:clevis-tpm1' clevis clevis-luks
 rpm-ostree override replace /tmp/clevis/clevis-21-1.tpm1u2.fc40.x86_64.rpm /tmp/clevis/clevis-luks-21-1.tpm1u2.fc40.x86_64.rpm
