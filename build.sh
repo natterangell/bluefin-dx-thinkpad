@@ -12,8 +12,7 @@ RELEASE="$(rpm -E %fedora)"
 
 # Override clevis and clevis-luks from base in favour of own fork with TPM1.2 suport
 #rpm-ostree override replace --experimental --freeze --from repo='copr:copr.fedorainfracloud.org:natterangell:clevis-tpm1' clevis clevis-luks
-rpm-ostree override replace /tmp/clevis/clevis-21-1.tpm1u2.fc40.x86_64.rpm 
-rpm-ostree override replace /tmp/clevis/clevis-luks-21-1.tpm1u2.fc40.x86_64.rpm
+rpm-ostree override replace /tmp/clevis/clevis-21-1.tpm1u2.fc40.x86_64.rpm /tmp/clevis/clevis-luks-21-1.tpm1u2.fc40.x86_64.rpm
 
 # Install thinkfan, tlp, igt-gpu-tools and displaylink kernel module, as well as (temporary) clevis dependencies
 rpm-ostree install tlp thinkfan igt-gpu-tools /tmp/rpms/kmods/*evdi*.rpm /tmp/clevis/clevis-dracut-21-1.tpm1u2.fc40.x86_64.rpm /tmp/clevis/clevis-systemd-21-1.tpm1u2.fc40.x86_64.rpm
