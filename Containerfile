@@ -49,7 +49,7 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 
 ## Download Clevis RPMs with TPM 1.2 support
 RUN mkdir /tmp/clevis
-RUN wget -qO- https://api.github.com/repos/oldium/clevis/releases/tags/v21_tpm1u2 | jq -r '.assets[].browser_download_url | select(test("fc40"))' | wget -ci- && mv clevis*.rpm /tmp/clevis
+RUN wget -qO- https://api.github.com/repos/oldium/clevis/releases/tags/v21_tpm1u3 | jq -r '.assets[].browser_download_url | select(test("fc40"))' | wget -ci- && mv clevis*.rpm /tmp/clevis
 RUN find /tmp/clevis
 
 ## Add displaylink support
