@@ -52,7 +52,7 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 #RUN find /tmp/clevis
 
 # Download VmWare Horizon client
-RUN curl -Lo https://download3.omnissa.com/software/CART25FQ2_LIN64_RPMPKG_2406/VMware-Horizon-Client-2406-8.13.0-9995429239.x64.rpm /tmp/rpms/VMware-Horizon-Client-2406-8.13.0-9995429239.x64.rpm
+RUN curl https://download3.omnissa.com/software/CART25FQ2_LIN64_RPMPKG_2406/VMware-Horizon-Client-2406-8.13.0-9995429239.x64.rpm --output /tmp/rpms/VMware-Horizon-Client-2406-8.13.0-9995429239.x64.rpm
 
 ## Add displaylink support
 COPY --from=ghcr.io/ublue-os/akmods-extra:coreos-stable-40 /rpms/ /tmp/rpms
