@@ -38,7 +38,6 @@ ARG SOURCE_SUFFIX="-dx"
 ## SOURCE_TAG arg must be a version built for the specific image: eg, 39, 40, gts, latest
 ARG SOURCE_TAG="gts"
 
-
 ### 2. SOURCE IMAGE
 ## this is a standard Containerfile FROM using the build ARGs above to select the right upstream image
 FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
@@ -55,6 +54,9 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 ## Add displaylink support
 COPY --from=ghcr.io/ublue-os/akmods-extra:coreos-stable-40 /rpms/ /tmp/rpms
 RUN curl -Lo /etc/yum.repos.d/fedora-multimedia.repo https://negativo17.org/repos/fedora-multimedia.repo
+
+## Add Copr repo for howdy support
+RUN curl -Lo /etc/yum.repos.d/howdy-copr.repo https://copr.fedorainfracloud.org/coprs/principis/howdy-beta/repo/fedora-40/principis-howdy-beta-fedora-40.repo
 RUN find /tmp/rpms
 
 COPY build.sh /tmp/build.sh
