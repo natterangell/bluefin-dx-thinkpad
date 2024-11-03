@@ -51,6 +51,10 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 #RUN wget -qO- https://api.github.com/repos/oldium/clevis/releases/tags/v21_tpm1u3 | jq -r '.assets[].browser_download_url | select(test("fc40"))' | wget -ci- && mv clevis*.rpm /tmp/clevis
 #RUN find /tmp/clevis
 
+RUN mkdir /tmp/vm
+RUN wget -P /tmp/vm https://download3.omnissa.com/software/CART25FQ2_LIN64_RPMPKG_2406/VMware-Horizon-Client-2406-8.13.0-9995429239.x64.rpm
+RUN find /tmp/vm
+
 ## Add displaylink support
 COPY --from=ghcr.io/ublue-os/akmods-extra:coreos-stable-40 /rpms/ /tmp/rpms
 RUN curl -Lo /etc/yum.repos.d/fedora-multimedia.repo https://negativo17.org/repos/fedora-multimedia.repo
