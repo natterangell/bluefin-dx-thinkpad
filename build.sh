@@ -16,7 +16,7 @@ RELEASE="$(rpm -E %fedora)"
 # Install thinkfan, tlp, igt-gpu-tools and displaylink kernel module, as well as (temporary) clevis dependencies
 #rpm-ostree install tlp thinkfan igt-gpu-tools /tmp/rpms/kmods/*evdi*.rpm /tmp/clevis/clevis-dracut-21-1.tpm1u3.fc40.x86_64.rpm /tmp/clevis/clevis-systemd-21-1.tpm1u3.fc40.x86_64.rpm
 rpm-ostree install /tmp/rpms/kmods/*evdi*.rpm howdy howdy-gtk
-rpm-ostree install /tmp/vm/VMware-Horizon-Client-2406-8.13.0-9995429239.x64.rpm
+rpm-ostree install /tmp/misc/*.rpm
 
 # Disable negativo repo after installing displaylink, as it otherwise conflicts with RPM-fusion, and disable howdy too, for good measure
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/fedora-multimedia.repo
