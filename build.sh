@@ -15,7 +15,7 @@ RELEASE="$(rpm -E %fedora)"
 
 # Install thinkfan, tlp, igt-gpu-tools and displaylink kernel module, as well as (temporary) clevis dependencies
 #rpm-ostree install tlp thinkfan igt-gpu-tools /tmp/rpms/kmods/*evdi*.rpm /tmp/clevis/clevis-dracut-21-1.tpm1u3.fc40.x86_64.rpm /tmp/clevis/clevis-systemd-21-1.tpm1u3.fc40.x86_64.rpm
-rpm-ostree install /tmp/rpms/kmods/*evdi*.rpm howdy howdy-gtk sbsigntools systemd-ukify
+rpm-ostree install /tmp/rpms/kmods/*evdi*.rpm howdy howdy-gtk sbsigntools systemd-ukify systemd-boot-unsigned
 rpm-ostree install /tmp/misc/*.rpm
 tar -C / --no-same-owner -m -h -vxzf /tmp/misc/linux-enable-ir-emitter-6.0.6.systemd.x86-64.tar.gz
 
