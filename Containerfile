@@ -54,7 +54,7 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 # Downlad Horizon-client and upstream rEFInd
 RUN mkdir /tmp/misc
 RUN wget -P /tmp/misc https://download3.omnissa.com/software/CART25FQ2_LIN64_RPMPKG_2406/VMware-Horizon-Client-2406-8.13.0-9995429239.x64.rpm
-RUN curl -LO https://sourceforge.net/projects/refind/files/0.12.0/refind-0.12.0-1.x86_64.rpm/download /tmp/misc/refind.rpm
+RUN wget -O refind.rpm https://sourceforge.net/projects/refind/files/0.12.0/refind-0.12.0-1.x86_64.rpm/download && mv refind.rpm /tmp/misc
 RUN find /tmp/misc
 
 ## Add displaylink support
