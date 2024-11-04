@@ -51,9 +51,11 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 #RUN wget -qO- https://api.github.com/repos/oldium/clevis/releases/tags/v21_tpm1u3 | jq -r '.assets[].browser_download_url | select(test("fc40"))' | wget -ci- && mv clevis*.rpm /tmp/clevis
 #RUN find /tmp/clevis
 
-RUN mkdir /tmp/vm
-RUN wget -P /tmp/vm https://download3.omnissa.com/software/CART25FQ2_LIN64_RPMPKG_2406/VMware-Horizon-Client-2406-8.13.0-9995429239.x64.rpm
-RUN find /tmp/vm
+# Downlad Horizon-client and upstream rEFInd
+RUN mkdir /tmp/misc
+RUN wget -P /tmp/misc https://download3.omnissa.com/software/CART25FQ2_LIN64_RPMPKG_2406/VMware-Horizon-Client-2406-8.13.0-9995429239.x64.rpm
+RUN wget -P /tmp/misc https://sourceforge.net/projects/refind/files/0.12.0/refind-0.12.0-1.x86_64.rpm/download
+RUN find /tmp/misc
 
 ## Add displaylink support
 COPY --from=ghcr.io/ublue-os/akmods-extra:coreos-stable-40 /rpms/ /tmp/rpms
